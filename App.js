@@ -4,6 +4,8 @@ import logo from '/Users/Riva_Kajangu/code-workstation/HabitsCloset/logo.png';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Image } from 'react-native-elements';
+import { StatusBar } from 'expo-status-bar';
+import Homescreen from './Screens/Homescreen';
 
 const Stack = createStackNavigator();
 
@@ -14,7 +16,7 @@ const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} />
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Find Your Next Guest</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -26,18 +28,19 @@ const Login = ({ navigation }) => {
         secureTextEntry
         onChangeText={text => setPassword(text)}
       />
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('HomeScreen')}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-const Home = () => {
+const HomeScreen = () => {
   return (
-    <View>
-      <Text>This is the Home Screen</Text>
-    </View>
+  <View style={styles.container}>
+        <Homescreen/>
+        <StatusBar style="auto"/>
+  </View>
   );
 };
 
@@ -48,10 +51,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    fontSize: 24,
-    marginBottom: 16,
+  logo: {
+    width: 299,
+    height: 192,
+    marginBottom: 60,
+    padding: 50,
   },
+  title: { //to remove login above Email box
+    fontSize: 24,
+    marginBottom: 80,
+  }, 
   input: {
     width: '80%',
     height: 40,
@@ -117,7 +126,7 @@ const App = () => {
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Search" component={Search} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -127,4 +136,6 @@ export const LoginScreen = ({ navigation }) => {
   // ...
 };
 
+
 export default App;
+
