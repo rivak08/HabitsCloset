@@ -10,12 +10,9 @@ const Podcast = () => {
       }}
         style={styles.Image}
       />
-      <View style={styles.info}>
-        <Text style={styles.heading}>Speak with: <Text style={styles.author}>The Unknown Podcast</Text></Text>
-      </View>
 
       {/* Title*/}
-      <Text style={styles.title}>Speak with The Unknown</Text>
+      <Text style={styles.author}>Speak with: <Text style={styles.title}>The Unknown Podcast</Text></Text>
 
       {/* Description*/}
       <Text style={styles.description}>The only podcast elevating the unknown heroes we should know about</Text>
